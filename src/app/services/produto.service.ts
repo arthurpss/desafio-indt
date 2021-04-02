@@ -31,4 +31,8 @@ export class ProdutoService {
   updateProduto(id: number, formData: FormData): Promise<any> {
     return this.http.put(`${this.baseUrl}/produto/${id}`, formData).toPromise();
   }
+
+  deleteProduto(id: number): Promise<any> {
+    return this.http.delete(`${this.baseUrl}/produto/${id}`).toPromise();
+  }
 }

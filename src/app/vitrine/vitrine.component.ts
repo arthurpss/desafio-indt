@@ -50,4 +50,8 @@ export class VitrineComponent implements OnInit {
   editarProduto(id: number): void {
     this.router.navigateByUrl(`editar-produto/${id}`);
   }
+
+  excluirProduto(id: number): void {
+    this.produtoService.deleteProduto(id).then(() => window.location.reload());
+  }
 };
