@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Produto } from 'src/interfaces/produto.interface';
+import { ProdutoService } from '../services/produto.service';
 
 @Component({
   selector: 'app-cadastro-produto',
@@ -17,18 +19,34 @@ export class CadastroProdutoComponent implements OnInit {
   }
   produtoCadastrado: boolean = false;
   file: File | undefined;
+  mensagem: String = "";
+  progress: number = 0;
+  fileInfos: Observable<any> | undefined;
+  formData = new FormData();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private produtoService: ProdutoService) { }
 
   ngOnInit(): void {
   }
 
+  private montaFormData(): void {
+    if (this.file)
+      this.formData.append("file", this.file);
+    this.formData.append("produto", new Blob([JSON.stringify(this.produto)], { type: "application/json" }));
+  }
+
   cadastraProduto(): void {
+    this.montaFormData();
+    this.produtoService.addProduto(this.formData).then(response => {
+      this.produtoCadastrado = true;
+      console.log(response);
+      this.router.navigateByUrl("/");
+    });
   }
 
   onFileSelected(event: any) {
-    if (event.target.file) {
-      this.file = event.target.file;
+    if (event.target.files) {
+      this.file = event.target.files.item(0);
     }
   }
 }

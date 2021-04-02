@@ -25,11 +25,9 @@
             <label class="custom-file-label" for="imagem">Imagem</label>
             <input type="file" class="custom-file-input" id="imagem" (change)="onFileSelected($event)">
         </div>
-        <div class="input-group mb-5">
-            <input [disabled]="form.invalid || produtoCadastrado" class="btn btn-primary my-2" value="Cadastrar" type="submit">
-            <span *ngIf="produtoCadastrado" class="alert alert-success" role="alert" style="margin-left: 40px;">
-                "Produto cadastrado"
-            </span>
-        </div>
+        <input [disabled]="form.invalid || produtoCadastrado" class="btn btn-primary my-2" type="submit">
     </form>
+    <span *ngIf="produtoCadastrado" class="alert alert-success" role="alert" style="margin-left: 40px;">
+        "Produto cadastrado"
+    </span>
 </div>

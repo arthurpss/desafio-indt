@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CadastroProdutoComponent } from './cadastro-produto/cadastro-produto.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { DetalhesProdutoComponent } from './detalhes-produto/detalhes-produto.component';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { DetalhesProdutoComponent } from './detalhes-produto/detalhes-produto.co
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
