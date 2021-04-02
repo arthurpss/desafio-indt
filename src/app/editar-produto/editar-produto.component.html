@@ -1,0 +1,40 @@
+<div class="album py-5 bg-light">
+    <div *ngIf="produto" class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card mb-4 shadow-sm">
+                    <img [src]="produto.imagem" [alt]="produto.nome">
+                </div>
+                <h4 *ngIf="!produto"> Produto não existe </h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form #form="ngForm" (submit)="editarProduto()">
+                    <label for="tipo-produto">Nome do produto</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="nome" placeholder="Nome do produto" name="nome"
+                            [(ngModel)]="produto.nome" required>
+                    </div>
+                    <label for="descricao">Descrição do produto</label>
+                    <div class="input-group mb-3">
+                        <textarea class="form-control" id="descricao" name="descricao" rows="5"
+                            [(ngModel)]="produto.descricao" required></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">R$</span>
+                        </div>
+                        <input type="number" class="form-control" id="valor" placeholder="Valor do produto" name="valor"
+                            [(ngModel)]="produto.valor" required>
+                    </div>
+                    <div class="input-group mb-3 custom-file">
+                        <label class="custom-file-label" for="imagem">Imagem</label>
+                        <input type="file" class="custom-file-input" id="imagem" (change)="onFileSelected($event)">
+                    </div>
+                    <input [disabled]="form.invalid" class="btn btn-primary my-2" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,14 +4,22 @@ import { Produto } from 'src/interfaces/produto.interface';
 import { ProdutoService } from '../services/produto.service';
 
 @Component({
-  selector: 'app-detalhes-produto',
-  templateUrl: './detalhes-produto.component.html',
-  styleUrls: ['./detalhes-produto.component.css']
+  selector: 'app-editar-produto',
+  templateUrl: './editar-produto.component.html',
+  styleUrls: ['./editar-produto.component.css']
 })
-export class DetalhesProdutoComponent implements OnInit {
+export class EditarProdutoComponent implements OnInit {
 
-  produto: Produto | undefined;
+  produto: Produto = {
+    id: 0,
+    nome: "",
+    descricao: "",
+    valor: 0,
+    imagem: ""
+  }
 
+  file: File | undefined;
+  formData = new FormData();
 
   constructor(private produtoService: ProdutoService, private router: Router, private route: ActivatedRoute) { }
 
@@ -42,8 +50,26 @@ export class DetalhesProdutoComponent implements OnInit {
         .then(() => { if (this.produto) this.getImageFromService(this.produto) });
   }
 
-  editarProduto(id: number): void {
-    this.router.navigateByUrl(`editar-produto/${id}`);
+  onFileSelected(event: any) {
+    if (event.target.files) {
+      this.file = event.target.files.item(0);
+    }
+  }
+
+  private montaFormData(): void {
+    if (this.file)
+      this.formData.append("file", this.file);
+    this.formData.append("produto", new Blob([JSON.stringify(this.produto)], { type: "application/json" }));
+  }
+
+  editarProduto(): void {
+    this.montaFormData();
+    this.produtoService.updateProduto(this.produto.id, this.formData).then(response => {
+      // this.produtoCadastrado = true;
+      console.log(response);
+      // this.router.navigateByUrl("/");
+    });
   }
 
 }
+

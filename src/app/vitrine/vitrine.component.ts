@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Produto } from 'src/interfaces/produto.interface';
 import { ProdutoService } from '../services/produto.service';
 
@@ -11,9 +12,9 @@ export class VitrineComponent implements OnInit {
 
   produtos: Produto[] | undefined;
 
-  constructor(private produtoService: ProdutoService) { }
+  constructor(private produtoService: ProdutoService, private router: Router) { }
 
-  createImageFromBlob(produto: Produto, image: Blob) {
+  createImageFromBlob(produto: Produto, image: Blob): void {
     let reader = new FileReader();
     reader.addEventListener("load", () => {
       produto.imagem = reader.result;
@@ -24,7 +25,7 @@ export class VitrineComponent implements OnInit {
     }
   }
 
-  getImageFromService(produto: Produto) {
+  getImageFromService(produto: Produto): void {
     this.produtoService.getImagem(produto.id, produto.imagem).subscribe(data => {
       this.createImageFromBlob(produto, data);
     }, error => {
@@ -40,5 +41,13 @@ export class VitrineComponent implements OnInit {
           this.produtos.forEach(produto => this.getImageFromService(produto)
           )
       })
+  }
+
+  verDetalhes(id: number): void {
+    this.router.navigateByUrl(`detalhes-produto/${id}`);
+  }
+
+  editarProduto(id: number): void {
+    this.router.navigateByUrl(`editar-produto/${id}`);
   }
 };

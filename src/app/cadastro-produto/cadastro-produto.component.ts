@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Produto } from 'src/interfaces/produto.interface';
 import { ProdutoService } from '../services/produto.service';
 
@@ -20,9 +19,6 @@ export class CadastroProdutoComponent implements OnInit {
   }
   produtoCadastrado: boolean = false;
   file: File | undefined;
-  mensagem: String = "";
-  progress: number = 0;
-  fileInfos: Observable<any> | undefined;
   formData = new FormData();
 
   constructor(private router: Router, private produtoService: ProdutoService) { }

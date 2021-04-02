@@ -10,6 +10,7 @@ import { ProdutoComponent } from './produto/produto.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DetalhesProdutoComponent } from './detalhes-produto/detalhes-produto.component';
+import { EditarProdutoComponent } from './editar-produto/editar-produto.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DetalhesProdutoComponent } from './detalhes-produto/detalhes-produto.co
     NavbarComponent,
     CadastroProdutoComponent,
     ProdutoComponent,
-    DetalhesProdutoComponent
+    DetalhesProdutoComponent,
+    EditarProdutoComponent
   ],
   imports: [
     BrowserModule,
