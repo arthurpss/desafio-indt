@@ -12,10 +12,11 @@ import { ProdutoService } from '../services/produto.service';
 export class CadastroProdutoComponent implements OnInit {
 
   produto: Produto = {
+    id: 0,
     nome: "",
     descricao: "",
     valor: 0,
-    imagem_url: ""
+    imagem: ""
   }
   produtoCadastrado: boolean = false;
   file: File | undefined;
