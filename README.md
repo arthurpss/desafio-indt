@@ -1,12 +1,12 @@
 # Markdown Desafio
 
-#h2 Descrição
+##h2 Descrição
     Aplicação WEB em arquitetura RESTful onde é possível:
     - Listar produtos (vitrine)
     - Cadastrar produto
     - Editar produto
     - Deletar produto
-#h2 Tecnologias utilizadas
+##h2 Tecnologias utilizadas
     Angular 11, Bootstrap, Java 11, Spring Framework, Docker e Swagger
 
 # Requisitos:
@@ -17,14 +17,14 @@
  
 # Passo a passo:
 - Clonar repositórios:
-- - backend: https://github.com/arthurpss/desafio-indt-backend.git
-- - frontend: https://github.com/arthurpss/desafio-indt.git
+    - backend: https://github.com/arthurpss/desafio-indt-backend.git
+    - frontend: https://github.com/arthurpss/desafio-indt.git
 - Rodar no diretório onde o **backend** foi clonado:
-- - docker-compose up -d
-- - mvn spring:boot run
+    - docker-compose up -d
+    - mvn spring:boot run
 - Rodar no diretório onde o **frontend** foi clonado:
-- - npm install
-- - npm start
+    - npm install
+    - npm start
 
 # Swagger:
     Após realizar o passo a passo informado acima, acesse a documentação da API em: [Swagger](http://localhost:8080/swagger-ui.html)
