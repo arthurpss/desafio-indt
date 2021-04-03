@@ -9,7 +9,6 @@ import { ProdutoService } from '../services/produto.service';
   styleUrls: ['./cadastro-produto.component.css']
 })
 export class CadastroProdutoComponent implements OnInit {
-
   produto: Produto = {
     id: 0,
     nome: "",

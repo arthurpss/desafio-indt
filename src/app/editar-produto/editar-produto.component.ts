@@ -64,10 +64,8 @@ export class EditarProdutoComponent implements OnInit {
 
   editarProduto(): void {
     this.montaFormData();
-    this.produtoService.updateProduto(this.produto.id, this.formData).then(response => {
-      // this.produtoCadastrado = true;
-      console.log(response);
-      // this.router.navigateByUrl("/");
+    this.produtoService.updateProduto(this.produto.id, this.formData).then(() => {
+      this.router.navigateByUrl("/");
     });
   }
 

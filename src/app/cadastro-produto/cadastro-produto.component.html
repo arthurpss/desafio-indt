@@ -4,30 +4,35 @@
         <p class="lead">Cadastre seu produto para torná-lo visível na vitrine.</p>
     </div>
     <form #form="ngForm" (submit)="cadastraProduto()">
-        <label for="tipo-produto">Nome do produto</label>
+        <label for="nome">Nome do produto</label>
         <div class="input-group mb-3">
             <input type="text" class="form-control" id="nome" placeholder="Nome do produto" name="nome"
-                [(ngModel)]="produto.nome" required>
+                [(ngModel)]="produto.nome" minlength="1" maxlength="50" required>
         </div>
         <label for="descricao">Descrição do produto</label>
         <div class="input-group mb-3">
             <textarea class="form-control" id="descricao" name="descricao" rows="5" [(ngModel)]="produto.descricao"
-                required></textarea>
+                required minlength="1" maxlength="400"></textarea>
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">R$</span>
             </div>
             <input type="number" class="form-control" id="valor" placeholder="Valor do produto" name="valor"
-                [(ngModel)]="produto.valor" required>
+                [(ngModel)]="produto.valor" required max="1000000000" min="0">
         </div>
         <div class="input-group mb-3 custom-file">
             <label class="custom-file-label" for="imagem">Imagem</label>
-            <input type="file" class="custom-file-input" id="imagem" (change)="onFileSelected($event)">
+            <input type="file" class="custom-file-input" id="imagem" required (change)="onFileSelected($event)">
         </div>
-        <input [disabled]="form.invalid || produtoCadastrado" class="btn btn-primary my-2" type="submit">
+        <input [disabled]="form.invalid || !file || produtoCadastrado" class="btn btn-primary my-2" type="submit">
     </form>
-    <span *ngIf="produtoCadastrado" class="alert alert-success" role="alert" style="margin-left: 40px;">
-        "Produto cadastrado"
-    </span>
+    <div style="margin: 20px -42px;">
+        <span *ngIf="form.invalid || !file" class="alert alert-warning" role="alert" style="margin-left: 40px;">
+            Todos os campos são obrigatórios.
+        </span>
+        <span *ngIf="produtoCadastrado" class="alert alert-success" role="alert" style="margin-left: 40px;">
+            Produto cadastrado.
+        </span>
+    </div>
 </div>
