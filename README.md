@@ -1,27 +1,30 @@
-# Desafio
+# Markdown Desafio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+#h2 Descrição
+    Aplicação WEB em arquitetura RESTful onde é possível:
+    - Listar produtos (vitrine)
+    - Cadastrar produto
+    - Editar produto
+    - Deletar produto
+#h2 Tecnologias utilizadas
+    Angular 11, Bootstrap, Java 11, Spring Framework, Docker e Swagger
 
-## Development server
+# Requisitos:
+- Ter o maven instalado
+- Ter o docker instalado
+- Ter o node(versão 10) instalado
+- Ter as portas 3306, 8080 e 4200 disponíveis
+ 
+# Passo a passo:
+- Clonar repositórios:
+- - backend: https://github.com/arthurpss/desafio-indt-backend.git
+- - frontend: https://github.com/arthurpss/desafio-indt.git
+- Rodar no diretório onde o **backend** foi clonado:
+- - docker-compose up -d
+- - mvn spring:boot run
+- Rodar no diretório onde o **frontend** foi clonado:
+- - npm install
+- - npm start
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Swagger:
+    Após realizar o passo a passo informado acima, acesse a documentação da API em: [Swagger](http://localhost:8080/swagger-ui.html)
